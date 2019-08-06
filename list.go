@@ -114,6 +114,19 @@ func (list *IntSLList) min() int {
 	return max
 }
 
-func (list *IntSLList) removeDupes() {
+func (list *IntSLList) removeDuplicates() {
+	var m = make(map[int]bool)
 
+	var pn *IntSLLNode
+	cn := list.head
+	for cn != nil {
+		if m[cn.info] {
+			pn.next = cn.next
+		} else {
+			m[cn.info] = true
+			pn = cn
+		}
+
+		cn = cn.next
+	}
 }
